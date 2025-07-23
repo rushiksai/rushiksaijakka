@@ -1,11 +1,35 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // AOS (Animate On Scroll) is initialized directly in index.html after its CDN script,
-  // but you can uncomment AOS.init(); here if you prefer managing it solely in script.js,
-  // ensuring the AOS CDN is loaded before this script.
+  // AOS (Animate On Scroll) is initialized directly in index.html after its CDN script
   // AOS.init();
 
   // Get the navigation toggle checkbox
   const navToggle = document.getElementById('nav-toggle');
+
+  // Enhanced smooth scroll function
+  function smoothScrollTo(targetElement, duration = 800) {
+    const targetPosition = targetElement.offsetTop - 80; // Offset for fixed navbar
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    function animation(currentTime) {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      if (timeElapsed < duration) requestAnimationFrame(animation);
+    }
+
+    // Easing function for smooth animation
+    function ease(t, b, c, d) {
+      t /= d / 2;
+      if (t < 1) return c / 2 * t * t + b;
+      t--;
+      return -c / 2 * (t * (t - 2) - 1) + b;
+    }
+
+    requestAnimationFrame(animation);
+  }
 
   // Smooth scroll for all internal anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -17,47 +41,78 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetElement = document.querySelector(targetId);
 
       if (targetElement) {
-        // Scroll to the target element smoothly
-        targetElement.scrollIntoView({
-          behavior: 'smooth'
-        });
+        // Use custom smooth scroll function
+        smoothScrollTo(targetElement);
 
-        // --- NEW: Close the mobile menu after clicking a link ---
-        // If the navToggle checkbox exists and is checked (meaning the menu is open), uncheck it.
+        // Close the mobile menu after clicking a link
         if (navToggle && navToggle.checked) {
           navToggle.checked = false;
+        }
+
+        // Update URL without triggering scroll
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
         }
       }
     });
   });
 
-  // --- Back to Top button logic ---
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    const navbar = document.querySelector('.navbar');
+    if (navbar && navToggle && !navbar.contains(e.target) && navToggle.checked) {
+      navToggle.checked = false;
+    }
+  });
+
+  // Back to Top button logic
   const backToTopBtn = document.createElement('button');
-  backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i>'; // Using Lucide icon for the arrow
+  backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i>';
   backToTopBtn.id = 'backToTop';
+  backToTopBtn.setAttribute('aria-label', 'Zurück nach oben');
   document.body.appendChild(backToTopBtn);
 
-  // IMPORTANT: Re-create lucide icons AFTER the button is added to the DOM.
-  // This ensures the dynamically added icon is rendered by Lucide.
-  // This call depends on the Lucide CDN script being loaded in index.html.
+  // Re-create lucide icons after the button is added
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
     lucide.createIcons();
   }
 
-  // Show/hide button on scroll
+  // Show/hide back to top button on scroll
+  let isScrolling = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) { // Show button after scrolling 300px down
-      backToTopBtn.style.display = 'flex'; // Use flex to center the icon as per CSS
-    } else {
-      backToTopBtn.style.display = 'none';
+    if (!isScrolling) {
+      window.requestAnimationFrame(() => {
+        if (window.pageYOffset > 300) {
+          backToTopBtn.style.display = 'flex';
+          backToTopBtn.style.opacity = '1';
+        } else {
+          backToTopBtn.style.opacity = '0';
+          setTimeout(() => {
+            if (window.pageYOffset <= 300) {
+              backToTopBtn.style.display = 'none';
+            }
+          }, 300);
+        }
+        isScrolling = false;
+      });
+      isScrolling = true;
     }
   });
 
-  // Scroll to top when button is clicked
+  // Smooth scroll to top when button is clicked
   backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth' // Smooth scroll to top
-    });
+    smoothScrollTo(document.body, 600);
+  });
+
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', (e) => {
+    if (window.location.hash) {
+      const targetElement = document.querySelector(window.location.hash);
+      if (targetElement) {
+        setTimeout(() => {
+          smoothScrollTo(targetElement);
+        }, 100);
+      }
+    }
   });
 });
