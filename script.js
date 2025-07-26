@@ -116,3 +116,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+ // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Wait for DOM to load, then initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Small delay to ensure all elements are rendered
+            setTimeout(() => {
+                if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                    lucide.createIcons();
+                    console.log('Lucide icons initialized successfully');
+                } else {
+                    console.error('Lucide library not loaded properly');
+                }
+            }, 100);
+        });
+// Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+        
+        // Initialize Lucide icons
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                    lucide.createIcons();
+                    console.log('Lucide icons initialized');
+                }
+                
+                // Animate progress bars
+                const progressBars = document.querySelectorAll('.progress-fill');
+                progressBars.forEach((bar, index) => {
+                    setTimeout(() => {
+                        const progress = bar.getAttribute('data-progress');
+                        bar.style.width = progress + '%';
+                    }, 300 + (index * 200));
+                });
+            }, 100);
+        });
