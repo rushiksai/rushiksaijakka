@@ -160,7 +160,7 @@
       </div>
     </div>
   </section>
-<!--project-->
+!--project-->
 <section class="projects-section" id="projects-section">
     <div class="section-card" data-aos="fade-up" data-aos-duration="1000">
         <div class="projects-section-content">
@@ -192,7 +192,7 @@
                             <span class="tool-btn">Rviz</span>
                         </div>
                         <p class="project-description">
-                          Laserscandaten werden auf die Tür vor dem Roboter geprüft. Der Abstand zur Tür wird überprüft. Sobald der Abstand einen bestimmten Schwellenwert überschreitet, setzt sich der Roboter in Bewegung. Bevor er sich bewegt, wartet der Roboter, bis die Tür vollständig geöffnet ist. Die Bewegung wird gestoppt, wenn sich etwa 0,5 m vor dem Roboter ein Hindernis befindet (z. B. wenn der Roboter die Wand im nächsten Raum erreicht). Visualisierung: Laserscandaten in rviz zeigen, dass die Tür geöffnet wird.
+                          ROS 2 Projekt zur autonomen Roboternavigation durch Türen mittels Laserscandaten. Der Roboter prüft den Abstand zur Tür und bewegt sich nur, wenn diese weit genug geöffnet ist (Schwellenwert). Er wartet, bis die Tür vollständig offen ist, und stoppt bei Hindernissen (ca. 0,5 m). Die Visualisierung in RViz zeigt den Prozess. 
                         </p>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                     </div>
                     <div class="project-content">
                         <div class="project-header">
-                            <h3 class="project-title">Turtle Party - Multi-Agenten-Verfolgungssimulation (ROS 2, Python-3.10)</h3>
+                            <h3 class="project-title">Turtle Bot - Multi-Agenten-Verfolgungssimulation</h3>
                             <a href="https://github.com/rushiksai/ros-2/tree/main/rpwr-assignments/03_ros" target="_blank" class="github-icon-link" aria-label="GitHub repository for Turtle Party Simulation">
                                 <i data-lucide="github"></i>
                             </a>
@@ -214,7 +214,7 @@
                             <span class="tool-btn">Python</span>
                         </div>
                         <p class="project-description">
-                            Dieses Projekt simuliert eine Kette von Schildkröten, die sich gegenseitig folgen, indem es ROS 2 und das Paket turtlesim verwendet. Ich habe ein ROS 2-Python-Paket mit benutzerdefinierten Knoten erstellt: einen Broadcaster, um die Pose der führenden Schildkröte zu veröffentlichen, und einen Follow-Knoten für jede nachfolgende Schildkröte, um ihren Vorgänger anhand von Echtzeit-Positionsdaten zu verfolgen. Das Projekt umfasste die vollständige Einrichtung eines ROS 2-Arbeitsbereichs, das Schreiben von Knoten für Frame-Transformationen mit tf2_ros und die Konfiguration einer Startdatei, um die Schildkröten zu starten und alle Knoten synchron zu betreiben. Die erste Schildkröte wurde manuell gesteuert, während jede nachfolgende Schildkröte ihre Bewegung dynamisch an die der vorherigen anpasste. Diese Aufgabe hat mein Verständnis von ROS 2-Kommunikation, tf-Broadcasting, Multi-Agenten-Koordination und Workspace-Setup vertieft.
+                          ROS 2 Projekt simuliert eine Schildkrötenkette mittels turtlesim. Ein Python-Paket mit Broadcaster- und Follower-Knoten wurde entwickelt. Die Einrichtung umfasste ROS 2-Arbeitsbereich, tf2_ros und eine Launch-Datei. Manuell gesteuerte erste Schildkröte; folgende passten sich dynamisch an. Vertiefte ROS 2-Kommunikation, tf-Broadcasting, Multi-Agenten-Koordination.
                         </p>
                     </div>
                 </div>
@@ -236,7 +236,28 @@
                             <span class="tool-btn">Python</span>
                         </div>
                         <p class="project-description">
-                            Menschen mit Krankheiten wie ALS und GBS sind im täglichen Leben auf Rollstühle angewiesen. Diese Menschen verlieren jedoch mit der Zeit die Kontrolle über verschiedene Muskeln, was einen umfassenden Rollstuhl mit mehreren Bedienelementen unmöglich macht. Ein modularer Rollstuhl mit elektronischen Sensoren und mechanisch flexiblen Komponenten, der durch neue Technologien wie Datenanalyse, maschinelles Lernen, Robotik und Internet der Dinge ergänzt wird, könnte eine praktikable Lösung sein. Dieser Rollstuhl ist erweiterbar, ermöglicht verschiedene Betriebs- und Steuerungsmodi und ist erschwinglich und anpassungsfähig. Er kann mit physischen Joysticks, digitalen Joysticks und Sprachbefehlen gesteuert werden, was ihn für Patienten mit diesen Erkrankungen besonders vorteilhaft macht.
+                            Dieses Projekt konzentriert sich auf einen modularen Rollstuhl für Patienten mit Krankheiten wie ALS und GBS, die mit der Zeit die Muskelkontrolle verlieren. Aktuelle Rollstühle mit vielfältigen Steuerungen sind oft ungeeignet, da sich der Zustand der Patienten ändert. Der entwickelte Rollstuhl ist erweiterbar und unterstützt verschiedene Betriebs- und Steuerungsmodi. Durch die Integration von Datenanalyse, ML, Robotik und IoT bietet er eine erschwingliche und anpassungsfähige Lösung. Die Steuerung erfolgt über physische Joysticks, digitale Joysticks oder Sprachbefehle, was ihn besonders flexibel für den Krankheitsverlauf macht. 
+                          </p>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
+                    <div class="project-image">
+                        <img src="thermophile.png" alt="Modular Wheelchair Hardware Project" />
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Thermoelement-Analyse (MATLAB)</h3>
+                            <a href="YOUR_GITHUB_PROJECT_LINK_HERE_WHEELCHAIR_HARDWARE" target="_blank" class="github-icon-link" aria-label="GitHub repository for Modular Wheelchair Hardware">
+                                <i data-lucide="github"></i>
+                            </a>
+                        </div>
+                        <div class="tools-used">
+                            <span class="tool-btn">MATLAB</span>
+                            <span class="tool-btn">Thermophile sensor</span>
+                            <span class="tool-btn">Schwarzkörperstrahlung</span>
+                        </div>
+                        <p class="project-description">
+                          Dieses Projekt analysierte das Johnson-Rauschen und die Zeitkonstante eines Thermoelements. Mit MATLAB wurden Rauschspektren und Signalrekonstruktion durchgeführt. Es wurde der Spannungsverlauf bei verschiedenen Zuständen (Ein/Aus, Strahlung blockiert) untersucht und DC-Offset sowie Filter-Randeffekte entfernt. Die Amplituden wurden skaliert. Zusätzlich wurden Zeitverläufe für verschiedene Frequenzen (1-10 Hz) untersucht und exponentielle Kurven angepasst, um die Zeitkonstante zu schätzen.
                         </p>
                     </div>
                 </div>
