@@ -1150,6 +1150,17 @@ html, body {
     height: 100%;
   }
 }
+/* Additional styling for better visual hierarchy */
+.section-card {
+  background: transparent;
+  border: none;
+}
+/* Ensure proper aspect ratios are maintained */
+@media (min-width: 769px) {
+  .video-responsive {
+    height: 100%;
+  }
+}
 /* Ensure the Font Awesome CDN link is in your <head> as previously discussed */
 /* Skills Section */
 .skills-section {
