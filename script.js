@@ -1,162 +1,135 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // AOS (Animate On Scroll) is initialized directly in index.html after its CDN script
-  // AOS.init();
-
-  // Get the navigation toggle checkbox
-  const navToggle = document.getElementById('nav-toggle');
-
-  // Enhanced smooth scroll function
-  function smoothScrollTo(targetElement, duration = 800) {
-    const targetPosition = targetElement.offsetTop - 80; // Offset for fixed navbar
-    const startPosition = window.pageYOffset;
-    const distance = targetPosition - startPosition;
-    let startTime = null;
-
-    function animation(currentTime) {
-      if (startTime === null) startTime = currentTime;
-      const timeElapsed = currentTime - startTime;
-      const run = ease(timeElapsed, startPosition, distance, duration);
-      window.scrollTo(0, run);
-      if (timeElapsed < duration) requestAnimationFrame(animation);
+    // --- Initialize Third-Party Libraries ---
+    // AOS (Animate On Scroll) initialization
+    if (typeof AOS !== 'undefined') {
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
     }
 
-    // Easing function for smooth animation
-    function ease(t, b, c, d) {
-      t /= d / 2;
-      if (t < 1) return c / 2 * t * t + b;
-      t--;
-      return -c / 2 * (t * (t - 2) - 1) + b;
+    // Lucide icons initialization
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
     }
 
-    requestAnimationFrame(animation);
-  }
+    // --- Smooth Scrolling Functionality ---
+    /**
+     * Smoothly scrolls to a target element.
+     * @param {HTMLElement} targetElement The element to scroll to.
+     * @param {number} duration The duration of the scroll animation in milliseconds.
+     */
+    function smoothScrollTo(targetElement, duration = 800) {
+        const targetPosition = targetElement.offsetTop - 80; // Offset for fixed navbar
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
 
-  // Smooth scroll for all internal anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault(); // Prevent default jump behavior
-
-      // Get the target element using its ID
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-
-      if (targetElement) {
-        // Use custom smooth scroll function
-        smoothScrollTo(targetElement);
-
-        // Close the mobile menu after clicking a link
-        if (navToggle && navToggle.checked) {
-          navToggle.checked = false;
+        function animation(currentTime) {
+            if (startTime === null) startTime = currentTime;
+            const timeElapsed = currentTime - startTime;
+            const run = ease(timeElapsed, startPosition, distance, duration);
+            window.scrollTo(0, run);
+            if (timeElapsed < duration) requestAnimationFrame(animation);
         }
 
-        // Update URL without triggering scroll
-        if (history.pushState) {
-          history.pushState(null, null, targetId);
+        function ease(t, b, c, d) {
+            t /= d / 2;
+            if (t < 1) return c / 2 * t * t + b;
+            t--;
+            return -c / 2 * (t * (t - 2) - 1) + b;
         }
-      }
-    });
-  });
 
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(e) {
-    const navbar = document.querySelector('.navbar');
-    if (navbar && navToggle && !navbar.contains(e.target) && navToggle.checked) {
-      navToggle.checked = false;
+        requestAnimationFrame(animation);
     }
-  });
 
-  // Back to Top button logic
-  const backToTopBtn = document.createElement('button');
-  backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i>';
-  backToTopBtn.id = 'backToTop';
-  backToTopBtn.setAttribute('aria-label', 'Zurück nach oben');
-  document.body.appendChild(backToTopBtn);
+    // Smooth scroll for all internal anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
 
-  // Re-create lucide icons after the button is added
-  if (typeof lucide !== 'undefined' && lucide.createIcons) {
-    lucide.createIcons();
-  }
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
 
-  // Show/hide back to top button on scroll
-  let isScrolling = false;
-  window.addEventListener('scroll', () => {
-    if (!isScrolling) {
-      window.requestAnimationFrame(() => {
-        if (window.pageYOffset > 300) {
-          backToTopBtn.style.display = 'flex';
-          backToTopBtn.style.opacity = '1';
-        } else {
-          backToTopBtn.style.opacity = '0';
-          setTimeout(() => {
-            if (window.pageYOffset <= 300) {
-              backToTopBtn.style.display = 'none';
+            if (targetElement) {
+                smoothScrollTo(targetElement);
+
+                // Close the mobile menu after clicking a link
+                const navToggle = document.getElementById('nav-toggle');
+                if (navToggle && navToggle.checked) {
+                    navToggle.checked = false;
+                }
+
+                // Update URL without triggering scroll
+                if (history.pushState) {
+                    history.pushState(null, null, targetId);
+                }
             }
-          }, 300);
+        });
+    });
+
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', () => {
+        if (window.location.hash) {
+            const targetElement = document.querySelector(window.location.hash);
+            if (targetElement) {
+                // A small delay to ensure the page has re-rendered
+                setTimeout(() => {
+                    smoothScrollTo(targetElement);
+                }, 100);
+            }
         }
-        isScrolling = false;
-      });
-      isScrolling = true;
+    });
+
+    // --- Back to Top Button Logic ---
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.innerHTML = '<i data-lucide="arrow-up"></i>';
+    backToTopBtn.id = 'backToTop';
+    backToTopBtn.setAttribute('aria-label', 'Zurück nach oben');
+    document.body.appendChild(backToTopBtn);
+
+    // Re-create lucide icons for the new button
+    if (typeof lucide !== 'undefined' && lucide.createIcons) {
+        lucide.createIcons();
     }
-  });
 
-  // Smooth scroll to top when button is clicked
-  backToTopBtn.addEventListener('click', () => {
-    smoothScrollTo(document.body, 600);
-  });
+    // Show/hide back to top button on scroll
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.style.display = 'flex';
+            backToTopBtn.style.opacity = '1';
+        } else {
+            backToTopBtn.style.opacity = '0';
+            setTimeout(() => {
+                if (window.pageYOffset <= 300) {
+                    backToTopBtn.style.display = 'none';
+                }
+            }, 300);
+        }
+    });
 
-  // Handle browser back/forward buttons
-  window.addEventListener('popstate', (e) => {
-    if (window.location.hash) {
-      const targetElement = document.querySelector(window.location.hash);
-      if (targetElement) {
+    // Smooth scroll to top when button is clicked
+    backToTopBtn.addEventListener('click', () => {
+        smoothScrollTo(document.body, 600);
+    });
+
+    // --- Animate Progress Bars ---
+    const progressBars = document.querySelectorAll('.progress-fill');
+    progressBars.forEach((bar, index) => {
+        // A small delay for a staggered animation effect
         setTimeout(() => {
-          smoothScrollTo(targetElement);
-        }, 100);
-      }
-    }
-  });
+            const progress = bar.getAttribute('data-progress');
+            bar.style.width = progress + '%';
+        }, 300 + (index * 200));
+    });
+
+    // --- Mobile Menu Toggle Logic ---
+    const navToggle = document.getElementById('nav-toggle');
+    document.addEventListener('click', function(e) {
+        const navbar = document.querySelector('.navbar');
+        if (navbar && navToggle && !navbar.contains(e.target) && navToggle.checked) {
+            navToggle.checked = false;
+        }
+    });
 });
- // Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-        
-        // Wait for DOM to load, then initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
-            // Small delay to ensure all elements are rendered
-            setTimeout(() => {
-                if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                    lucide.createIcons();
-                    console.log('Lucide icons initialized successfully');
-                } else {
-                    console.error('Lucide library not loaded properly');
-                }
-            }, 100);
-        });
-// Initialize AOS
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
-        });
-        
-        // Initialize Lucide icons
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(() => {
-                if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                    lucide.createIcons();
-                    console.log('Lucide icons initialized');
-                }
-                
-                // Animate progress bars
-                const progressBars = document.querySelectorAll('.progress-fill');
-                progressBars.forEach((bar, index) => {
-                    setTimeout(() => {
-                        const progress = bar.getAttribute('data-progress');
-                        bar.style.width = progress + '%';
-                    }, 300 + (index * 200));
-                });
-            }, 100);
-        });
