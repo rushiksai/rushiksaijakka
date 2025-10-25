@@ -1272,14 +1272,15 @@ html, body {
 /* General Section Styling */
 /* Section and Title */
 /* ==== STUDENT ASSISTANT & RESEARCH EXPERIENCE SECTION ==== */
+/* ==== STUDENT ASSISTANT & RESEARCH EXPERIENCE SECTION (Modern Card UI) ==== */
 
 .experience-section {
-  background: linear-gradient(to right, #071230, #1543a6);
+  background: radial-gradient(circle at top left, #071230, #0a1d4a 40%, #00091e 100%);
   padding: 80px 20px;
   color: white;
-  text-align: center;
   position: relative;
   overflow: hidden;
+  font-family: 'Inter', sans-serif;
 }
 
 .experience-content {
@@ -1287,187 +1288,152 @@ html, body {
   margin: 0 auto;
   position: relative;
   z-index: 2;
+  text-align: left;
 }
 
 .section-title {
   font-size: 2.8rem;
-  font-weight: bold;
+  font-weight: 700;
   margin-bottom: 60px;
-  position: relative;
+  text-align: center;
   color: #ffffff;
+  letter-spacing: 0.5px;
 }
 
-/* Timeline Container */
+/* === Modern Card Container === */
 .timeline {
-  position: relative;
-  margin: 50px auto;
-  padding: 0;
-  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
-/* Vertical Line in the Center */
-.timeline::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 3px;
-  height: 100%;
-  background: rgba(96, 165, 250, 0.7);
-  transform: translateX(-50%);
-  z-index: 0;
-}
-
-/* Timeline Card Container */
 .timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 25px 35px;
-  background: rgba(7, 18, 48, 0.92);
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
-  margin: 40px 0;
-  color: #ffffff;
-  transition: all 0.3s ease;
-  z-index: 1;
+  background: linear-gradient(145deg, rgba(13, 25, 56, 0.9), rgba(7, 18, 48, 0.95));
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  padding: 35px 40px;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(96, 165, 250, 0.1);
 }
 
-/* Hover Interaction */
 .timeline-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(96, 165, 250, 0.6);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 35px rgba(96, 165, 250, 0.35);
 }
 
-/* Left / Right Alternation */
-.timeline-item:nth-child(odd) {
-  left: 0;
-  transform: translateX(-30px);
-}
-
-.timeline-item:nth-child(even) {
-  left: 50%;
-  transform: translateX(30px);
-}
-
-/* Blue Glow Dots */
-.timeline-item::before {
-  content: "";
-  position: absolute;
-  top: 25px;
-  right: -12px;
-  width: 18px;
-  height: 18px;
-  background: #60a5fa;
-  border-radius: 50%;
-  box-shadow: 0 0 15px rgba(96, 165, 250, 0.8);
-  z-index: 2;
-}
-
-.timeline-item:nth-child(even)::before {
-  left: -12px;
-  right: auto;
-}
-
-/* Timeline Content */
+/* Date */
 .timeline-date {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #60a5fa;
   font-weight: 600;
   margin-bottom: 10px;
-  text-align: left;
 }
 
+/* Titles */
 .timeline-content h3 {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 4px;
   color: #ffffff;
-  margin-bottom: 8px;
-  text-align: left;
+}
+
+.timeline-content p strong {
+  color: #9bbdfc;
 }
 
 .timeline-content p {
   font-size: 1rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #dbe6ff;
+  margin-bottom: 12px;
+}
+
+/* Skills section (badges) */
+.skills-used {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.skill-badge {
+  background: rgba(96, 165, 250, 0.15);
+  color: #60a5fa;
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  transition: all 0.3s ease;
+}
+
+.skill-badge:hover {
+  background: rgba(96, 165, 250, 0.3);
+  transform: scale(1.05);
+}
+
+/* Bullet points inside cards */
+.timeline-content ul {
+  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.timeline-content ul li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
   color: #dce3f0;
-  margin-bottom: 6px;
-  text-align: left;
+  line-height: 1.5;
 }
 
-/* Optional Links (if used) */
-.timeline-link {
-  text-decoration: none;
-  color: inherit;
-  transition: opacity 0.3s ease;
+.timeline-content ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #60a5fa;
+  font-size: 1.2rem;
+  top: 0;
 }
 
-.timeline-link:hover {
-  opacity: 0.9;
-}
-
-/* ====== Subtle Animation Enhancements ====== */
-@keyframes fadeInUp {
-  from {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.timeline-item {
-  animation: fadeInUp 0.8s ease both;
-}
-
-/* ====== Responsive Timeline Layout ====== */
-@media (max-width: 900px) {
-  .timeline::before {
-    left: 8px;
-  }
-
+/* Responsive */
+@media (max-width: 768px) {
   .timeline-item {
-    width: 100%;
-    margin-left: 35px;
-    transform: none !important;
+    padding: 25px 20px;
   }
 
-  .timeline-item:nth-child(even) {
-    left: 0;
+  .timeline-content h3 {
+    font-size: 1.2rem;
   }
 
-  .timeline-item::before {
-    left: -26px;
-  }
-
-  .timeline-content h3,
-  .timeline-content p,
-  .timeline-date {
-    text-align: left;
+  .section-title {
+    font-size: 2rem;
   }
 }
 
-/* ====== Optional Glow Background Effect ====== */
+/* Subtle Glow Animation */
 .experience-section::after {
   content: "";
   position: absolute;
-  top: -150px;
-  right: -150px;
-  width: 300px;
-  height: 300px;
+  top: -120px;
+  right: -120px;
+  width: 280px;
+  height: 280px;
   background: radial-gradient(circle, rgba(96,165,250,0.15), transparent 70%);
-  filter: blur(40px);
+  filter: blur(45px);
   z-index: 1;
   animation: floatGlow 6s ease-in-out infinite alternate;
 }
 
 @keyframes floatGlow {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(25px);
-  }
+  from { transform: translateY(0); }
+  to { transform: translateY(20px); }
 }
+
+
+
+
+
 .certifications-section {
     background: linear-gradient(to right, #071230, #1543a6);
     padding: 60px 20px;
