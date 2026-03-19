@@ -1477,7 +1477,25 @@ html, body {
     font-weight: bold;
     margin-bottom: 50px;
 }
+/* Special handling for Portrait Certificates */
+.cert-card.portrait {
+    height: 400px; /* Increased height to accommodate vertical aspect ratio */
+}
 
+/* This ensures the image covers the card area beautifully */
+.cert-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This crops the edges slightly to fit the box */
+    object-position: top; /* Keeps the top of the certificate (logo/title) visible */
+    display: block;
+}
+
+/* Optional: If you want to see the whole certificate on hover instead of just text */
+.cert-card.portrait:hover img {
+    object-fit: contain; /* Shows the full vertical document on hover */
+    background-color: #f0f0f0;
+}
 /* Grid for Certificates */
 .cert-grid {
     display: flex;
