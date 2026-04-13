@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rushik Sai Jakka | Robotics Engineer</title>
 
-  <link rel="stylesheet" href="styles.css">
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+  <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
+  <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      lucide.createIcons();
+    });
+  </script>
 </head>
 <body>
 
@@ -37,7 +47,7 @@
   <section class="hero">
     <div class="hero-content-wrapper section-card" data-aos="fade-up" data-aos-duration="1000">
       <div class="hero-img" data-aos="fade-right" data-aos-duration="1000">
-        <img src="Jakka_new.jpeg" alt="Profile" class="profile-img" />
+        <img src="Jakka_new.jpeg" alt="Profile photo of Rushik Sai Jakka" class="profile-img" />
       </div>
 
       <div class="hero-content" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
@@ -47,25 +57,21 @@
 
         <div class="buttons">
           <a href="Resume_Jakka_ROS.pdf" class="btn" target="_blank" rel="noopener noreferrer">
-            <i data-lucide="download"></i>
-            <span>View Resume</span>
+            <i data-lucide="download"></i> View Resume
           </a>
           <a href="#contact" class="btn">
-            <i data-lucide="mail"></i>
-            <span>Contact Information</span>
+            <i data-lucide="mail"></i> Contact Information
           </a>
         </div>
 
-            <div class="social-icons">
-      <a href="https://linkedin.com/in/rushiksaijakka" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn.simpleicons.org/linkedin/60a5fa" alt="LinkedIn" class="brand-icon">
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://github.com/rushiksai" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn.simpleicons.org/github/60a5fa" alt="GitHub" class="brand-icon">
-        <span>GitHub</span>
-      </a>
-    </div>
+        <div class="social-icons">
+          <a href="https://linkedin.com/in/rushiksaijakka" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="linkedin"></i><span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/rushiksai" target="_blank" rel="noopener noreferrer">
+            <i data-lucide="github"></i><span>GitHub</span>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -75,7 +81,6 @@
   <div class="section-card" data-aos="fade-up" data-aos-duration="1000">
     <div class="about-content">
       <h2 class="section-title">About Me</h2>
-
       <div class="about-container">
         <ul class="about-list">
           <li>
@@ -103,9 +108,7 @@
               <i data-lucide="map-pin"></i>
               Location
             </div>
-            <p>
-              Bremen, Germany (Open to relocation)
-            </p>
+            <p>Bremen, Germany (Open to relocation)</p>
           </div>
         </div>
       </div>
@@ -124,12 +127,8 @@
           </div>
           <div class="edu-content">
             <div class="edu-level">Current</div>
-            <div class="edu-degree">
-              Master of Science (M.S.) in Control Microelectronics and Microsystems
-            </div>
-            <div class="edu-institute">
-              University of Bremen, Bremen, Germany
-            </div>
+            <div class="edu-degree">Master of Science (M.S.) in Control Microelectronics and Microsystems</div>
+            <div class="edu-institute">University of Bremen, Bremen, Germany</div>
             <div class="edu-date">April 2024 – Present</div>
           </div>
         </div>
@@ -140,12 +139,8 @@
           </div>
           <div class="edu-content">
             <div class="edu-level">Completed</div>
-            <div class="edu-degree">
-              Bachelor of Technology (B. Tech.) in Electronics and Instrumentation Engineering
-            </div>
-            <div class="edu-institute">
-              VNR Vignana Jyothi Institute of Engineering and Technology, India
-            </div>
+            <div class="edu-degree">Bachelor of Technology (B. Tech.) in Electronics and Instrumentation Engineering</div>
+            <div class="edu-institute">VNR Vignana Jyothi Institute of Engineering and Technology, India</div>
             <div class="edu-date">Aug. 2019 – July 2023</div>
           </div>
         </div>
@@ -163,8 +158,8 @@
         <div class="project-card" data-aos="zoom-in" data-aos-duration="800">
           <div class="project-image">
             <div class="video-responsive">
-              <iframe 
-                src="https://www.youtube.com/embed/6ao7w6dNs8w?si=nhcc0CgRgJalq1ne" 
+              <iframe
+                src="https://www.youtube.com/embed/6ao7w6dNs8w?si=nhcc0CgRgJalq1ne"
                 title="YouTube video player for Autonomous Delivery Robot"
                 frameborder="0"
                 allowfullscreen>
@@ -175,7 +170,7 @@
             <div class="project-header">
               <h3 class="project-title">Autonomous Delivery Robot</h3>
               <a href="https://github.com/rushiksai/ros-2/tree/main/rpwr-assignments/internship/group5_ws" target="_blank" rel="noopener noreferrer" class="github-icon-link" aria-label="GitHub repository for Autonomous Delivery Robot">
-                <img src="https://cdn.simpleicons.org/github/ffffff" alt="" class="project-brand-icon">
+                <i class="fa-brands fa-github"></i>
               </a>
             </div>
             <div class="tools-used">
@@ -199,7 +194,7 @@
             <div class="project-header">
               <h3 class="project-title">Turtle Bot - Multi-Agent Tracking Simulation</h3>
               <a href="https://github.com/rushiksai/ros-2/tree/main/rpwr-assignments/03_ros" target="_blank" rel="noopener noreferrer" class="github-icon-link" aria-label="GitHub repository for Turtle Party Simulation">
-                <img src="https://cdn.simpleicons.org/github/ffffff" alt="" class="project-brand-icon">
+                <i class="fa-brands fa-github"></i>
               </a>
             </div>
             <div class="tools-used">
@@ -220,8 +215,8 @@
           <div class="project-content">
             <div class="project-header">
               <h3 class="project-title">Modular Wheelchair (Hardware & Mechanics)</h3>
-              <a href="YOUR_GITHUB_PROJECT_LINK_HERE_WHEELCHAIR_HARDWARE" target="_blank" rel="noopener noreferrer" class="github-icon-link" aria-label="GitHub repository for Modular Wheelchair Hardware">
-                <img src="https://cdn.simpleicons.org/github/ffffff" alt="" class="project-brand-icon">
+              <a href="#" class="github-icon-link" aria-label="GitHub repository for Modular Wheelchair Hardware">
+                <i class="fa-brands fa-github"></i>
               </a>
             </div>
             <div class="tools-used">
@@ -242,8 +237,8 @@
           <div class="project-content">
             <div class="project-header">
               <h3 class="project-title">Thermocouple Analysis (MATLAB)</h3>
-              <a href="YOUR_GITHUB_PROJECT_LINK_HERE_WHEELCHAIR_HARDWARE" target="_blank" rel="noopener noreferrer" class="github-icon-link" aria-label="GitHub repository for Thermocouple Analysis">
-                <img src="https://cdn.simpleicons.org/github/ffffff" alt="" class="project-brand-icon">
+              <a href="#" class="github-icon-link" aria-label="GitHub repository for Thermocouple Analysis">
+                <i class="fa-brands fa-github"></i>
               </a>
             </div>
             <div class="tools-used">
@@ -264,8 +259,8 @@
           <div class="project-content">
             <div class="project-header">
               <h3 class="project-title">Industrial Control & Process Automation</h3>
-              <a href="YOUR_GITHUB_PROJECT_LINK_HERE_PLCS_OR_CONTROL_PROJECTS" target="_blank" rel="noopener noreferrer" class="github-icon-link" aria-label="GitHub repository for Industrial Control Systems">
-                <img src="https://cdn.simpleicons.org/github/ffffff" alt="" class="project-brand-icon">
+              <a href="#" class="github-icon-link" aria-label="GitHub repository for Industrial Control Systems">
+                <i class="fa-brands fa-github"></i>
               </a>
             </div>
             <div class="tools-used">
@@ -581,26 +576,11 @@
       <div class="proficiency-legend" data-aos="fade-up" data-aos-delay="500">
         <h4>Language Proficiency Legend</h4>
         <div class="legend-items">
-          <div class="legend-item">
-            <span class="legend-dot native"></span>
-            <span>Native</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot filled"></span>
-            <span>Fluent</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot half-filled"></span>
-            <span>Advanced</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot quarter-filled"></span>
-            <span>Basic</span>
-          </div>
-          <div class="legend-item">
-            <span class="legend-dot empty"></span>
-            <span>No Knowledge</span>
-          </div>
+          <div class="legend-item"><span class="legend-dot native"></span><span>Native</span></div>
+          <div class="legend-item"><span class="legend-dot filled"></span><span>Fluent</span></div>
+          <div class="legend-item"><span class="legend-dot half-filled"></span><span>Advanced</span></div>
+          <div class="legend-item"><span class="legend-dot quarter-filled"></span><span>Basic</span></div>
+          <div class="legend-item"><span class="legend-dot empty"></span><span>No Knowledge</span></div>
         </div>
       </div>
     </div>
@@ -614,7 +594,7 @@
 
       <div class="contact-grid">
         <div class="contact-item">
-          <a href="tel:+4917612345678" target="_blank" rel="noopener noreferrer" class="contact-link">
+          <a href="tel:+4915215479007" target="_blank" rel="noopener noreferrer" class="contact-link">
             <div class="icon-circle">
               <i data-lucide="phone"></i>
             </div>
@@ -632,35 +612,32 @@
         </div>
 
         <div class="contact-item">
-        <a href="https://linkedin.com/in/rushiksaijakka" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <div class="icon-circle">
-            <img src="https://cdn.simpleicons.org/linkedin/ffffff" alt="LinkedIn" class="contact-brand-icon">
-          </div>
-          <span class="contact-text">Rushik Sai Jakka</span>
-        </a>
-      </div>
-        <div class="contact-item">
-        <a href="https://github.com/rushiksai?tab=repositories" target="_blank" rel="noopener noreferrer" class="contact-link">
-          <div class="icon-circle">
-            <img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" class="contact-brand-icon">
-          </div>
-          <span class="contact-text">rushiksai</span>
-        </a>
-      </div>
+  <a href="https://linkedin.com/in/rushiksaijakka" target="_blank" rel="noopener noreferrer" class="contact-link">
+    <div class="icon-circle">
+      <i class="fa-brands fa-linkedin-in"></i>
+    </div>
+    <span class="contact-text">Rushik Sai Jakka</span>
+  </a>
+</div>
+
+<div class="contact-item">
+  <a href="https://github.com/rushiksai?tab=repositories" target="_blank" rel="noopener noreferrer" class="contact-link">
+    <div class="icon-circle">
+      <i class="fa-brands fa-github"></i>
+    </div>
+    <span class="contact-text">rushiksai</span>
+  </a>
+</div>
       </div>
     </div>
   </div>
 </section>
 
-<script src="https://unpkg.com/lucide@latest"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function () {
-    lucide.createIcons();
-    AOS.init({
-      duration: 1200,
-      once: true
-    });
+  AOS.init({
+    duration: 1200,
+    once: true
   });
 </script>
 
