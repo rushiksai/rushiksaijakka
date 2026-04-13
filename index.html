@@ -2,25 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Jakka</title>
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Lucide Icons - Using proper CDN -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rushik Sai Jakka | Robotics Engineer</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  
+
   <script src="https://unpkg.com/lucide@latest"></script>
   <script src="script.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      lucide.createIcons();
-    });
-  </script>
 </head>
 <body>
 
@@ -658,7 +648,20 @@
       </div>
     </div>
   </section>
-
 </div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    lucide.createIcons();
+    AOS.init({
+      duration: 1200,
+      once: true
+    });
+  });
+</script>
+
+</body>
+</html>
 </body>
 </html>
