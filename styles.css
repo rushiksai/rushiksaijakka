@@ -1088,7 +1088,17 @@ html, body {
   flex-shrink: 0;
   text-decoration: none;
 }
+.github-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.project-brand-icon {
+  width: 20px;
+  height: 20px;
+  display: block;
+}
 .github-icon-link svg {
   width: 20px;
   height: 20px;
