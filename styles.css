@@ -424,11 +424,13 @@ html, body {
         }
 
         .social-icons a svg {
-            stroke: #60a5fa;
-            width: 36px;
-            height: 36px;
-            transition: all 0.3s ease;
-        }
+        width: 36px;
+        height: 36px;
+        stroke: currentColor;
+        stroke-width: 2;
+        fill: none;
+        transition: all 0.3s ease;
+}
 
         .social-icons a:hover {
             transform: scale(1.1);
@@ -1073,12 +1075,18 @@ html, body {
   border-radius: 50%;
   background-color: #0d284a;
   color: #60a5fa;
-  font-size: 1.5rem;
   transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
   text-decoration: none;
 }
+
+.github-icon-link svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}
+
 .github-icon-link:hover {
   background-color: #173974;
   transform: scale(1.1);
@@ -2164,11 +2172,13 @@ html, body {
     width: 50px; /* Even smaller icon circles on mobile */
     height: 50px;
   }
-  .icon-circle i,
   .icon-circle svg {
-    width: 26px;
-    height: 26px;
-  }
+  width: 32px;
+  height: 32px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+}
   .contact-text {
     font-size: 0.95rem;
     text-align: left;
