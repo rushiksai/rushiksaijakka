@@ -424,14 +424,22 @@ html, body {
         }
 
         .social-icons a svg {
-        width: 36px;
-        height: 36px;
-        stroke: currentColor;
-        stroke-width: 2;
-        fill: none;
-        transition: all 0.3s ease;
+  width: 36px;
+  height: 36px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  display: block;
 }
 
+.icon-circle svg {
+  width: 28px;
+  height: 28px;
+  stroke: white;
+  stroke-width: 2;
+  fill: none;
+  display: block;
+}
         .social-icons a:hover {
             transform: scale(1.1);
             color: #87cefa;
